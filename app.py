@@ -620,11 +620,24 @@ SPECIES_INFO = {
     "sentinel_crab":      {"label": "Sentinel Crab",      "status": "EDIBLE",    "latin": "Macrophthalmus japonicus"},
 }
 
+def download_model():
+    import gdown
+    weights_path = "model_kepiting.weights.h5"
+    json_path = "model_kepiting.json"
+    
+    if not os.path.exists(weights_path):
+        with st.spinner("⏬ Mengunduh model dari Google Drive..."):
+            # File ID dari Google Drive
+            file_id = "1CBh5iPcpo7SH5nKAml9Uk_zi_-7DugDU"
+            url = f"https://drive.google.com/uc?id={file_id}"
+            gdown.download(url, weights_path, quiet=False)
+
 @st.cache_resource
 def load_model():
     try:
         import tensorflow as tf
         import json
+        download_model()
         with open("model_kepiting.json", "r") as f:
             config = json.load(f)
         model = tf.keras.models.model_from_json(json.dumps(config))
