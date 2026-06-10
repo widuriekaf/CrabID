@@ -51,7 +51,7 @@ Aplikasi web berbasis **Streamlit** untuk mengidentifikasi spesies kepiting laut
 ### 1. Clone repository
 
 ```bash
-git clone https://github.com/username/CrabID.git
+git clone https://github.com/widuriekaf/CrabID.git
 cd CrabID
 ```
 
